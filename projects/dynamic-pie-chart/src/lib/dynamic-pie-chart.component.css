@@ -1,0 +1,45 @@
+#containerSVG {
+    width: 100%;
+    height: 100%;
+}
+
+.pie {
+    width: 100%;
+    height: 100%;
+}
+
+.slice-active {
+    fill-opacity: 0.5;
+}
+
+.slice-active:hover {
+    fill-opacity: 0.9;
+}
+
+.slice-inactive {
+    fill-opacity: 0.4;
+}
+
+.text {
+    fill: lightGrey;
+    font-size: 22px;
+}
+
+.text-active {
+    fill: black;
+    font-size: 22px;
+}
+
+.percentage {
+  fill:white;
+}
+
+.host-logo {
+  width: 30px;
+  height: 30px;
+}
+
+em.logo {
+  font-size: 24px;
+  color: grey;
+}
