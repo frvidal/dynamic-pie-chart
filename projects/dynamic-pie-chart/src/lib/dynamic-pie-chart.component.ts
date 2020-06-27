@@ -2,9 +2,11 @@ import { Component, AfterViewInit, Input, ViewEncapsulation, OnInit, AfterConten
 import * as D3 from 'd3';
 import { Slice } from './slice';
 import { BehaviorSubject, of, Observable, Subject } from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap, switchMap, switchMapTo } from 'rxjs/operators';
 import { TypeSlice } from './type-slice';
 import { BaseComponent } from './base.component';
+import { DynamicPieChartService } from './dynamic-pie-chart.service';
+import { ChartTypeSlice } from './chart-type-slice';
 
 @Component({
     selector: 'fvi-dynamic-pie-chart',
@@ -20,6 +22,11 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      * Observable passing an array of Slices to the pie.
      */
     @Input() slices$ = new BehaviorSubject<Slice[]>([]);
+
+    /**
+     * Observable passing an array of Types of slices used for the legend.
+     */
+    @Input() typeSlices$ = new BehaviorSubject<TypeSlice[]>([]);
 
     /**
      * Radius of the Pie.
@@ -72,7 +79,19 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      */
     private ANGLE_MINIMUM_FOR_LABEL = 15;
 
-    constructor() {
+    /**
+     * Array of types of slice used to display the legend associated with each type of slice.
+     *
+     * This array might contain the complete list
+     */
+    public wholeTypeSlices: TypeSlice[];
+
+    /**
+     * Array of types of slice used to display the legend associated with each type of slice.
+     */
+    public chartTypeSlices: TypeSlice[];
+
+    constructor(public dynamicPieChartService: DynamicPieChartService) {
         super();
     }
 
@@ -103,36 +122,46 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 .forEach(slice => {
                     slice.offset = offset;
                     offset += slice.angle;
-            });
+                });
         }
 
         this.arcGenerator = D3.arc().cornerRadius(4).padAngle(.01).padRadius(100);
         this.subscriptions.add(
-            this.slices$
-                .pipe(tap(slices => {
+            this.typeSlices$.pipe(
+                switchMap(typeSlices => {
+                    this.wholeTypeSlices = typeSlices;
+                    return this.slices$;
+                })
+            ).subscribe(slices => {
+                if (this.debug) {
+                    console.groupCollapsed('slices received for pie %d', this.pie);
+                    slices.forEach(slice => console.log(slice.type + ' ' + slice.id + ' ' + slice.offset + ' ' + slice.angle));
+                    console.groupEnd();
+                }
+                setTimeout(() => {
+                    calculateOffset(slices);
+                    this.chartTypeSlices = this.dynamicPieChartService.buildChartTypeSlices(this.wholeTypeSlices, slices);
                     if (this.debug) {
-                        console.groupCollapsed('slices received for pie %d', this.pie);
-                        slices.forEach(slice => console.log (slice.type + ' ' + slice.id + ' ' + slice.offset + ' ' + slice.angle));
+                        console.groupCollapsed('List of type of slices corresponding to the given slices');
+                        this.chartTypeSlices.forEach(element => {
+                            console.log(element.type, element.label);
+                        });
                         console.groupEnd();
                     }
-                })).
-                subscribe((slices => {
-                    setTimeout(() => {
-                        calculateOffset(slices);
-                        this.generatePie(...slices);
-                    }, 0);
-                })));
+                    this.generatePie(...slices);
+                }, 0);
+            }));
     }
 
     /**
      * This function generates the Chart pie.
-     * 
+     *
      * @param slices the given slices with its parameters *(such as angle, color...)*
      */
     private generatePie(...slices: Slice[]) {
         if (this.debug) {
             console.groupCollapsed('slices ordered for pie %d', this.pie);
-            slices.forEach(slice => console.log (slice.type + ' ' + slice.id + ' ' + slice.offset + ' ' + slice.angle));
+            slices.forEach(slice => console.log(slice.type + ' ' + slice.id + ' ' + slice.offset + ' ' + slice.angle));
             console.groupEnd();
         }
         slices.forEach(slice => {
@@ -191,8 +220,8 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 .html(slice.angle + '%');
 
             D3.select(this.svgPieSliceID(slice.id))
-                .on('click', function () { this.onSliceClick(slice); }.bind(this))
-                .on('mouseover', function () { this.onSliceMouseOver(slice); }.bind(this));
+                .on('click', function() { this.onSliceClick(slice); }.bind(this))
+                .on('mouseover', function() { this.onSliceMouseOver(slice); }.bind(this));
         }
     }
 
@@ -220,6 +249,7 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     onSliceMouseOver(slice: Slice): void {
         this.inactiveArcs();
         this.inactiveTexts();
+        /*
         switch (slice.type) {
             case TypeSlice.Sonar:
                 this.activeArc('#arcSonar');
@@ -234,6 +264,7 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 this.activeText('#textStaff');
                 break;
         }
+        */
     }
 
     /**

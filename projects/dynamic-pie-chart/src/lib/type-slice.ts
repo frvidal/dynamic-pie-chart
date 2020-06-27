@@ -1,6 +1,8 @@
-export enum TypeSlice {
-	Sonar = 0,
-	Staff = 1,
-	Audit = 2,
-	None = 4
+/**
+ * Type of slice.
+ */
+export class TypeSlice {
+    constructor(
+        public type: number,
+        public label: string) {}
 }

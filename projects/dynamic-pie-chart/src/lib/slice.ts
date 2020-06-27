@@ -4,7 +4,7 @@ export class Slice {
 
     constructor(
         public id: number,
-        public type: TypeSlice,
+        public type: number,
         public angle: number,
         public offset: number,
         public color: string,
