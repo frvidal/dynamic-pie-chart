@@ -5,6 +5,6 @@ export class ChartTypeSlice {
     constructor(
         public type: number,
         public label: string,
-        public startingAnglar: number,
+        public startingAngle: number,
         public endingAngle: number) {}
 }

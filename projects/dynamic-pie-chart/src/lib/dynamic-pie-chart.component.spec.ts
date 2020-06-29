@@ -82,7 +82,6 @@ describe('DynamicPieChartComponent', () => {
             typeSlices.push(new TypeSlice(3, 'el label Tres'));
             typeSlices.push(new TypeSlice(4, 'The label Four...'));
             this.typeSlices$.next(typeSlices);
-
             this.slices$.next(initSlicesOne());
         }
     }
@@ -119,4 +118,5 @@ describe('DynamicPieChartComponent', () => {
             expect(component).toBeTruthy();
         }, 5000);
     });
+
 });

@@ -82,19 +82,9 @@ export const MockSlicesOne = [
     {
         id: 8,
         type: 3,
-        angle: 60,
+        angle: 75,
         offset: 0,
         color: 'darkGreen',
-        activated: false,
-        selected: false,
-        contents: []
-    },
-    {
-        id: 9,
-        type: 2,
-        angle: 15,
-        offset: 0,
-        color: 'yellow',
         activated: false,
         selected: false,
         contents: []

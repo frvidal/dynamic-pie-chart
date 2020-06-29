@@ -79,16 +79,17 @@ describe('DynamicPieChartService', () => {
         const result = service.buildChartTypeSlices(typeSlices, MockSlicesOne);
 
         expect(result[0].type).toBe(1);
-        expect(result[0].startingAnglar).toBe(0);
+        expect(result[0].startingAngle).toBe(0);
         expect(result[0].endingAngle).toBe(235);
 
         expect(result[1].type).toBe(2);
-        expect(result[1].startingAnglar).toBe(235);
+        expect(result[1].startingAngle).toBe(235);
         expect(result[1].endingAngle).toBe(290);
 
         expect(result[2].type).toBe(3);
-        expect(result[2].startingAnglar).toBe(290);
+        expect(result[2].startingAngle).toBe(290);
         expect(result[2].endingAngle).toBe(360);
     });
+
 
 });

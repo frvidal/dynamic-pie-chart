@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ChartTypeSlice } from './chart-type-slice';
 import { TypeSlice } from './type-slice';
-import { Slice } from 'dist/dynamic-pie-chart/lib/slice';
+import { Slice } from './slice';
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +27,7 @@ export class DynamicPieChartService {
                 chartTypeSlices.get(slice.type).endingAngle += slice.angle;
                 endingAngle = chartTypeSlices.get(slice.type).endingAngle;
             } else {
-                chartTypeSlices.set(slice.type, new ChartTypeSlice(slice.type, '', endingAngle, endingAngle + slice.angle));
+                chartTypeSlices.set(slice.type, new ChartTypeSlice(slice.type, 'label', endingAngle, endingAngle + slice.angle));
                 endingAngle += slice.angle;
             }
         });
@@ -57,8 +57,7 @@ export class DynamicPieChartService {
         const start = polarToCartesian(x, y, radius, endAngle);
         const end = polarToCartesian(x, y, radius, startAngle);
 
-        const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
-
+        const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
         const d = [
             'M', start.x, start.y,
             'A', radius, radius, 0, largeArcFlag, 0, end.x, end.y

@@ -38,21 +38,26 @@
             </g>
         </svg>
 
-
-        <!-- Legends around the pie. 
-        <g *ngIf="legend">
-            <g *ngFor="let typeSlice of chartTypeSlices; index as idTypeSlice">
-                <path id="arcSonar" stroke="lightGrey"  fill="none" stroke-width="1" 
-                    d="{{dynamicPieChartService.describeArc(200, 200)}}" 
-                    marker-start="url(#arrow)" marker-end="url(#arrow)"></path>
-                <text id="textSonar" dy="-5" class="text" >
-                    <textPath alignment-baseline="top" text-anchor="middle" startOffset="50%" xlink:href="#arcSonar">
-                        Sonar 
+        <g *ngIf="(legend)">
+            <g *ngFor="let typeSlice of (chartTypeSlices$|async); index as idTypeSlice">
+                <path id="arc-{{pie}}-{{typeSlice.type}}" 
+                    stroke="lightGrey"  
+                    fill="none" 
+                    stroke-width="1" 
+                    attr.d="{{dynamicPieChartService.describeArc(200, 200, 170, typeSlice.startingAngle, typeSlice.endingAngle)}}" 
+                    marker-start="url(#arrow)" 
+                    marker-end="url(#arrow)">
+                </path>
+                <text id="textSonar" dy="20" class="text" style="direction: rtl; unicode-bidi: bidi-override;" >
+                    <textPath 
+                        text-anchor="middle"
+                        startOffset="50%" 
+                        attr.xlink:href="#arc-{{pie}}-{{typeSlice.type}}">
+                        {{typeSlice.label}}
                     </textPath>
                 </text>
             </g>
         </g>
-        -->
 
     </svg>
 </div>

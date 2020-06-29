@@ -87,9 +87,9 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     public wholeTypeSlices: TypeSlice[];
 
     /**
-     * Array of types of slice used to display the legend associated with each type of slice.
+     * Observable emitting an array of types of slice used to display the legend associated with each type of slice.
      */
-    public chartTypeSlices: TypeSlice[];
+    public chartTypeSlices$ = new BehaviorSubject<ChartTypeSlice[]>([]);
 
     constructor(public dynamicPieChartService: DynamicPieChartService) {
         super();
@@ -140,14 +140,15 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 }
                 setTimeout(() => {
                     calculateOffset(slices);
-                    this.chartTypeSlices = this.dynamicPieChartService.buildChartTypeSlices(this.wholeTypeSlices, slices);
+                    const chartTypeSlices = this.dynamicPieChartService.buildChartTypeSlices(this.wholeTypeSlices, slices);
                     if (this.debug) {
                         console.groupCollapsed('List of type of slices corresponding to the given slices');
-                        this.chartTypeSlices.forEach(element => {
-                            console.log(element.type, element.label);
+                        chartTypeSlices.forEach(element => {
+                            console.log(element.type, element.label + ' from ' + element.startingAngle + ' to ' + element.endingAngle);
                         });
                         console.groupEnd();
                     }
+                    this.chartTypeSlices$.next(chartTypeSlices);
                     this.generatePie(...slices);
                 }, 0);
             }));

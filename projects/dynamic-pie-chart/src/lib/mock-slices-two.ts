@@ -88,15 +88,5 @@ export const MockSlicesTwo = [
         activated: false,
         selected: false,
         contents: []
-    },
-    {
-        id: 9,
-        type: 2,
-        angle: 40,
-        offset: 0,
-        color: 'yellow',
-        activated: false,
-        selected: false,
-        contents: []
     }
 ];
