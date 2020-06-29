@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, ViewEncapsulation, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, Input, ViewEncapsulation, OnInit, AfterContentInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import * as D3 from 'd3';
 import { Slice } from './slice';
 import { BehaviorSubject, of, Observable, Subject } from 'rxjs';
@@ -60,6 +60,16 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     @Input() legend = false;
 
     /**
+     * Emit the slice **Activated**
+     */
+    @Output() activated = new EventEmitter<Slice>();
+
+    /**
+     * Emit the slice **Selected**
+     */
+    @Output() selected = new EventEmitter<Slice>();
+
+    /**
      * D3 Arc generator.
      */
     arcGenerator: D3.Arc<any, D3.DefaultArcObject>;
@@ -67,12 +77,12 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     /**
      * Array of Arc identifiers.
      */
-    private arcs = ['#arcSonar', '#arcStaff', '#arcAudit'];
+    private arcs = [];
 
     /**
      * Array of Text identifiers.
      */
-    private texts = ['#textSonar', '#textStaff', '#textAudit'];
+    private texts = [];
 
     /**
      * Angle minimum required to display the label.
@@ -90,6 +100,8 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      * Observable emitting an array of types of slice used to display the legend associated with each type of slice.
      */
     public chartTypeSlices$ = new BehaviorSubject<ChartTypeSlice[]>([]);
+
+    public type = -1;
 
     constructor(public dynamicPieChartService: DynamicPieChartService) {
         super();
@@ -148,6 +160,8 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                         });
                         console.groupEnd();
                     }
+                    this.loadArcsArray(chartTypeSlices);
+                    this.loadTextsArray(chartTypeSlices);
                     this.chartTypeSlices$.next(chartTypeSlices);
                     this.generatePie(...slices);
                 }, 0);
@@ -171,6 +185,22 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 this.generatePieSlice(slice);
             }
         });
+    }
+
+    /**
+     * Load the array containing the arc identifiers.
+     * @param chartTypeSlices the type of slices present in the array
+     */
+    loadArcsArray(chartTypeSlices: ChartTypeSlice[]) {
+        this.arcs = [...chartTypeSlices.map(chartTypeSlice => '#arc-' + this.pie + '-' + chartTypeSlice.type)];
+    }
+
+    /**
+     * Load the array containing the text identifiers.
+     * @param chartTypeSlices the type of slices present in the array
+     */
+    loadTextsArray(chartTypeSlices: ChartTypeSlice[]) {
+        this.texts = [...chartTypeSlices.map(chartTypeSlice => '#text-' + this.pie + '-' + chartTypeSlice.type)];
     }
 
     /**
@@ -241,31 +271,19 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
         if (this.debug) {
             console.log('onSliceClick(%d)', slice.id);
         }
+        this.selected.emit(slice);
     }
 
-    /**
+    /**xxx
      * This function is invoked when the mouse pointer is located up on the given slice.
      * @param slice the slice highlighted by the end-user mouse.
      */
     onSliceMouseOver(slice: Slice): void {
         this.inactiveArcs();
         this.inactiveTexts();
-        /*
-        switch (slice.type) {
-            case TypeSlice.Sonar:
-                this.activeArc('#arcSonar');
-                this.activeText('#textSonar');
-                break;
-            case TypeSlice.Audit:
-                this.activeArc('#arcAudit');
-                this.activeText('#textAudit');
-                break;
-            case TypeSlice.Staff:
-                this.activeArc('#arcStaff');
-                this.activeText('#textStaff');
-                break;
-        }
-        */
+        this.activeArc('#arc-' + this.pie + '-' + slice.type);
+        this.activeText('#text-' + this.pie + '-' + slice.type);
+        this.activated.emit(slice);
     }
 
     /**

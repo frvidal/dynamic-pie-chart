@@ -26,4 +26,19 @@ export class AppComponent implements OnInit {
     }, 5000);
   }
 
+  /**
+   * A slice has been selected.
+   * @param slice the selected slice
+   */
+  public sliceSelection(slice: Slice) {
+    console.log ('Slice identifier selected', slice.id);
+  }
+
+  /**
+   * A slice has been activated.
+   * @param the activated slice
+   */
+  public sliceActivation(slice: Slice) {
+    console.log ('Slice identifier activated', slice.id);
+  }
 }

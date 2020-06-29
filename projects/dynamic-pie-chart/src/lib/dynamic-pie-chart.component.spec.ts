@@ -115,7 +115,6 @@ describe('DynamicPieChartComponent', () => {
         setTimeout(() => {
             component.slices$.next(initSlicesTwo());
             fixture.detectChanges();
-            expect(component).toBeTruthy();
         }, 5000);
     });
 
