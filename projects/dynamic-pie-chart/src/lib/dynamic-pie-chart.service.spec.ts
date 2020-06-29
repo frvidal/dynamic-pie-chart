@@ -84,10 +84,10 @@ describe('DynamicPieChartService', () => {
 
         expect(result[1].type).toBe(2);
         expect(result[1].startingAngle).toBe(235);
-        expect(result[1].endingAngle).toBe(290);
+        expect(result[1].endingAngle).toBe(275);
 
         expect(result[2].type).toBe(3);
-        expect(result[2].startingAngle).toBe(290);
+        expect(result[2].startingAngle).toBe(275);
         expect(result[2].endingAngle).toBe(360);
     });
 
