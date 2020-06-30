@@ -8,12 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy-internal": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm pack && cd ../.. && npm i ./dist/dynamic-pie-chart/dynamic-pie-chart-1.0.0.tgz",
-    "deploy-external": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm pack && cd ../.. && npm i ./dist/dynamic-pie-chart/dynamic-pie-chart-1.0.0.tgz"
+    "deploy-internal": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm pack && cd ../.. && npm i ./dist/dynamic-pie-chart/dynamic-pie-chart-1.0.1.tgz",
+    "deploy-external": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm publish"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.11",
+    "@angular/animations": "npm~9.1.11",
     "@angular/common": "~9.1.11",
     "@angular/compiler": "~9.1.11",
     "@angular/core": "~9.1.11",

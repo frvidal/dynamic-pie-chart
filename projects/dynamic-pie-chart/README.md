@@ -1,10 +1,10 @@
 # The Dynamic Pie Chart
 
+This library provides a `dynamic pie chart`, a sector diagram widget with a surrounding legend.
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
 
-It aims to provide a `dynamic pie chart`, a sector diagram widget with a surrounding legend.
-
-![Dynamic Pie Chart](./screen-copy.png)
+![Dynamic Pie Chart](https://frvidal.github.io/dynamic-pie-chart/projects/dynamic-pie-chart/screenshot.png)
 
 ## How to install and use the `dynamic-pie-chart` in your application ?
 
@@ -34,16 +34,16 @@ radius | INPUT | the radius of the Pie in pixel.
 active | INPUT | Does this pie have to be active, or not ? A pie is a set of slices. An active pie allows each slice to be activated, or selected, by the mouse cursor.
 legend | INPUT | `true` or `false`. _Does this pie has a legend ?_  In this current release (1.0.0), the legend is a circle with lebel surrounding the pie.
 slices$ | INPUT | an observable which publishes an array of slices to be drawn. Each sector diagram is made up of pieces, from various angles, and whose sum is equal to 360. _(This widget supports a sum of tranches lower than 360)_. This array will be internally sorted on the `type` property to provide a legend.
-typeSlices$ | INPUT | an observable which publishes an array of type of slices. the array ol slices  
-selected | OUTPUT |  an eventEmitter to inform the parent component that a slice has been activated
-activated | OUTPUT |  an eventEmitter to inform the parent component that a slice has been selected
+typeSlices$ | INPUT | an `observable` which publishes an array of type of slices. the array ol slices  
+selected | OUTPUT |  an `EventEmitter` to inform the parent component that a slice has been activated
+activated | OUTPUT |  an `EventEmitter` to inform the parent component that a slice has been selected
 
 
 ## What is a slice ?
 
 For the component, the pie is an array of slices.
 
-A Slice is a piece of the pie. 
+A slice is a piece of pie. 
 
 Property | type | Comment
 ------------ | ------------- | -------------

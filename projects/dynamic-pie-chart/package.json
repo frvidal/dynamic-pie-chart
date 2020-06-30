@@ -1,6 +1,6 @@
 {
   "name": "dynamic-pie-chart",
-  "version": "1.0.0",
+  "version": "1.0.1a",
   "peerDependencies": {
     "@angular/common": "^9.1.11",
     "@angular/core": "^9.1.11",
@@ -10,5 +10,16 @@
   },
   "dependencies": {
     "tslib": "^1.10.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frvidal/dynamic-pie-chart/tree/master/projects/dynamic-pie-chart"
+  },
+  "homepage": "https://github.com/frvidal/dynamic-pie-chart/tree/master/projects/dynamic-pie-chart#readme",
+  "author": {
+    "name": "Frédéric VIDAL",
+    "email": "frederic.vidal@fitzhi.com"
+  },
+  "keywords": ["angular","lib","dynamic","pie","chart","tag"]
 }
