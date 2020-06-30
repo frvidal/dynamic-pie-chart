@@ -8,11 +8,11 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ![Dynamic Pie Chart](https://frvidal.github.io/dynamic-pie-chart/projects/dynamic-pie-chart/screenshot.png)
 
-## Install the lib in your project ?
+## Installing this library in your project ?
 
 The most command `npm install dynamic-pie-chart` will install this library
 
-## using the library in your application ?
+## Using this library in your application ?
 
 To include this component into a container, you just have to declare this section into the HTML template.
 
@@ -63,4 +63,3 @@ selected | boolean | `true` or `false` if this slice is selectecd (the end-user 
 ## What is a type of slice ?
 
 A type of slices is a reference table of legend.
-
