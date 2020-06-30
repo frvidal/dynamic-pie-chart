@@ -1,14 +1,18 @@
 # The Dynamic Pie Chart
 
-This library provides a `dynamic pie chart`, a sector diagram widget with a surrounding legend.
+This library provides a dynamic pie chart, i.e. a sector diagram widget, which is linked to a dynamic source, and available for user interaction. Each sector can be activated, or selected with the mouse pointer.
+
+[A sample usage of this library is available inside the Fitzhi solution.]("http://www.fitzhi.com")
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
 
 ![Dynamic Pie Chart](https://frvidal.github.io/dynamic-pie-chart/projects/dynamic-pie-chart/screenshot.png)
 
-## How to install and use the `dynamic-pie-chart` in your application ?
+## Install the lib in your project ?
 
-A simple `npm install dynamic-pie-chart` will install this library
+The most command `npm install dynamic-pie-chart` will install this library
+
+## using the library in your application ?
 
 To include this component into a container, you just have to declare this section into the HTML template.
 
@@ -59,7 +63,4 @@ selected | boolean | `true` or `false` if this slice is selectecd (the end-user 
 ## What is a type of slice ?
 
 A type of slices is a reference table of legend.
-
-
-
 
