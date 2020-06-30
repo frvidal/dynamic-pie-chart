@@ -1,5 +1,5 @@
 {
-  "name": "@fitzhi/dynamic-pie-chart",
+  "name": "dynamic-pie-chart",
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^9.1.11",
