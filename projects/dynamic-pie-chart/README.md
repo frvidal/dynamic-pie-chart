@@ -6,7 +6,7 @@ It aims to provide a `dynamic pie chart`, a sector diagram widget with a surroun
 
 ![Dynamic Pie Chart](./screen-copy.png)
 
-## How to install and use `dynamic-pie-chart` in your application ?
+## How to install and use the `dynamic-pie-chart` in your application ?
 
 A simple `npm install dynamic-pie-chart` will install this library
 
