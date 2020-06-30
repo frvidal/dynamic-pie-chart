@@ -28,11 +28,14 @@ To include this component into a container, you just have to declare this sectio
 The parameters are :
 
 - pie : the pie identifier inside the container. 
+
 There can be multiple pies in the same component. Each pie must have a unique pie.
 - radius : the radius of the Pie in pixel.
 - active : Does this pie have to be active, or not ? 
+
 A pie is a set of slices. An active pie allows each slice to be activated, or selected, by the mouse cursor.
 - legend : `true` or `false`. _Does this pie need a legend ?_ 
+
 In this current release (1.0.0), the legend is the circle surrounding the pie.
 
 ## Input and output parameters of the widget ?
