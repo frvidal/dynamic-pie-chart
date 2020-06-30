@@ -18,52 +18,52 @@ describe('DynamicPieChartComponent', () => {
         <tr>
             <td>
                 <div style="width:400px;height:400px">
-                    <fvi-dynamic-pie-chart
+                    <lib-dynamic-pie-chart
                         [radius]=150
                         [active]=true
                         [legend]=false
                         [slices$]=slices$
                         [typeSlices$]=typeSlices$
                         [pie]=1>
-                    </fvi-dynamic-pie-chart>
+                    </lib-dynamic-pie-chart>
                 </div>
             </td>
             <td>
                 <div style="width:400px;height:400px">
-                    <fvi-dynamic-pie-chart
+                    <lib-dynamic-pie-chart
                         [radius]=150
                         [active]=true
                         [legend]=true
                         [slices$]=slices$
                         [typeSlices$]=typeSlices$
                         [pie]=2>
-                    </fvi-dynamic-pie-chart>
+                    </lib-dynamic-pie-chart>
                 </div>
             </td>
          </tr>
          <tr>
          <td>
              <div style="width:250px;height:250px">
-                 <fvi-dynamic-pie-chart
+                 <lib-dynamic-pie-chart
                      [radius]=150
                      [active]=false
                      [legend]=false
                      [slices$]=slices$
                      [typeSlices$]=typeSlices$
                      [pie]=3>
-                 </fvi-dynamic-pie-chart>
+                 </lib-dynamic-pie-chart>
              </div>
          </td>
          <td>
              <div style="width:100px;height:100px">
-                 <fvi-dynamic-pie-chart
+                 <lib-dynamic-pie-chart
                      [radius]=150
                      [active]=false
                      [legend]=true
                      [slices$]=slices$
                      [typeSlices$]=typeSlices$
                      [pie]=4>
-                 </fvi-dynamic-pie-chart>
+                 </lib-dynamic-pie-chart>
              </div>
          </td>
       </tr>

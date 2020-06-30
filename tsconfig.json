@@ -16,9 +16,6 @@
       "dom"
     ],
     "paths": {
-      "dynamic-pie-chart": [
-        "dist/dynamic-pie-chart"
-      ]
     }
   },
   "angularCompilerOptions": {

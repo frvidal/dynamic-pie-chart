@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/dynamic-pie-chart",
       "sourceRoot": "projects/dynamic-pie-chart/src",
-      "prefix": "fvi",
+      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

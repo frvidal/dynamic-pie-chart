@@ -9,14 +9,14 @@ import { DynamicPieChartService } from './dynamic-pie-chart.service';
 import { ChartTypeSlice } from './chart-type-slice';
 
 @Component({
-    selector: 'fvi-dynamic-pie-chart',
+    selector: 'lib-dynamic-pie-chart',
     templateUrl: './dynamic-pie-chart.component.html',
     encapsulation: ViewEncapsulation.Emulated,
     styleUrls: ['./dynamic-pie-chart.component.css']
 })
 export class DynamicPieChartComponent extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
 
-    private debug = true;
+    private debug = false;
 
     /**
      * Observable passing an array of Slices to the pie.
