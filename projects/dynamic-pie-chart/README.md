@@ -1,6 +1,7 @@
 # DynamicPieChart
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11. +
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
+
 Its aims to provide a `dynamic pie chart` widget with a surrounding legend.
 
 ![Dynamic Pie Chart](./screen-copy.png)
