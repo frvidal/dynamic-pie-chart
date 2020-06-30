@@ -9,8 +9,7 @@ Its aims to provide a `dynamic pie chart` widget with a surrounding legend.
 
 A simple `npm install dynamic-pie-chart`
 
-![Image of Yaktocat]
-(screen-copy.png)
+![Dynamic Pie Chart](./screen-copy.png)
 
 
 ## Input and output parameters of the widget ?
