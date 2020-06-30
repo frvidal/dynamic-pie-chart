@@ -56,6 +56,9 @@ contents | string | an array of objects associated to this slice.
 activated | boolean | `true` or `false` if this slice is activated (the end-user has clicked on its),
 selected | boolean | `true` or `false` if this slice is selectecd (the end-user has clicked on its),
 
+## What is a type of slice ?
+
+A type of slices is a reference table of legend.
 
 
 
