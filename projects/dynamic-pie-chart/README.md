@@ -2,7 +2,7 @@
 
 This library provides a dynamic pie chart, i.e. a sector diagram widget, which is linked to a dynamic source, and available for user interaction. Each sector can be activated, or selected with the mouse pointer.
 
-> [A sample usage of this library can be previewed (and admired) in the Fitzhì solution.](http://www.fitzhi.com)
+[A sample usage of this library can be previewed (and admired) in the Fitzhì solution.](http://www.fitzhi.com)
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
 
@@ -10,7 +10,18 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installing this library in your project ?
 
-The most command `npm install dynamic-pie-chart` will install this library
+The most simple command `npm install dynamic-pie-chart` will install this library
+
+To import the module inside your application, just add the module **DynamicPieChartModule** in your `app.module.ts`.
+
+location :
+> import {DynamicPieChartModule} from 'dynamic-pie-chart';
+
+
+2 mock files are provided for testing purpose. Each one is containing an array of slices :
+- MockSlicesOne
+- MockSlicesTwo
+
 
 ## Using this library in your application ?
 
