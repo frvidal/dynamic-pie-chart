@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DynamicPieChartModule } from '@fitzhi/dynamic-pie-chart';
+import { DynamicPieChartModule } from 'dynamic-pie-chart';
 
 
 @NgModule({
