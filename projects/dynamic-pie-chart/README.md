@@ -18,7 +18,7 @@ location :
 > import {DynamicPieChartModule} from 'dynamic-pie-chart';
 
 
-2 mock files are provided for testing purpose. Each one is containing an array of slices :
+2 mock files are provided for testing purpose. Each one is containing a sample array of slices :
 - MockSlicesOne
 - MockSlicesTwo
 
