@@ -24,6 +24,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm install
     - run: npm run build dynamic-pie-chart
-    - run: npm test dybnamic-pie-chart
+    - run: npm test dynamic-pie-chart
