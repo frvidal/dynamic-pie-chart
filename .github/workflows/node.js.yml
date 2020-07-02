@@ -28,3 +28,5 @@ jobs:
     - run: npm ci
     - run: npm run build dynamic-pie-chart
     - run: npm test dynamic-pie-chart
+    - run: npm run build test-pie-chart
+    - run: npm test test-pie-chart
