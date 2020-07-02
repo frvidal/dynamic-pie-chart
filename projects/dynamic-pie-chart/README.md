@@ -1,5 +1,7 @@
 # The Dynamic Pie Chart
 
+![](https://github.com/frvidal/dynamic-pie-chart/workflows/build-and-test/badge.svg)
+
 This library provides a dynamic pie chart, i.e. a sector diagram widget, which is linked to a dynamic source, and available for user interaction. Each sector can be activated, or selected with the mouse pointer.
 
 [A sample usage of this library can be previewed (and admired) in the Fitzhì solution.](http://www.fitzhi.com)
