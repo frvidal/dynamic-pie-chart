@@ -14,13 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    addons:
-      apt:
-        sources:
-          - google-chrome
-        packages:
-          - google-chrome-stable
-
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
