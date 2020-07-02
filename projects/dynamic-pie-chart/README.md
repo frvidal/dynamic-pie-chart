@@ -1,7 +1,6 @@
 # The Dynamic Pie Chart
 
 This library provides a dynamic pie chart, i.e. a sector diagram widget, which is linked to a dynamic source, and available for user interaction. Each sector can be activated, or selected with the mouse pointer.
-
 ![](https://github.com/frvidal/dynamic-pie-chart/workflows/Build_and_test/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
