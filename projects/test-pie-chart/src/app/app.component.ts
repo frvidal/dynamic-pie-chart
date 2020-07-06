@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MockSlicesOne } from 'projects/dynamic-pie-chart/src/lib/mock-slices-one';
 import { BehaviorSubject } from 'rxjs';
-import { Slice } from 'dist/dynamic-pie-chart/lib/slice';
-import { TypeSlice } from 'dist/dynamic-pie-chart/lib/type-slice';
-import { MockSlicesTwo } from 'projects/dynamic-pie-chart/src/lib/mock-slices-two';
+import { Slice } from 'dynamic-pie-chart';
+import { TypeSlice } from 'dynamic-pie-chart';
+import { MockSlicesOne } from 'dynamic-pie-chart';
+import { MockSlicesTwo } from 'dynamic-pie-chart';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,15 @@ export class AppComponent implements OnInit {
   public typeSlices$ = new BehaviorSubject<TypeSlice[]>([]);
 
   public legend = true;
+
   ngOnInit(): void {
+    const typeSlices = [
+      {type: 1, label: 'Eins'},
+      {type: 2, label: 'Zwei'},
+      {type: 3, label: 'Drei'}
+    ];
+    this.typeSlices$.next(typeSlices);
+
     this.slices$.next(MockSlicesOne);
     setTimeout(() => {
       this.slices$.next(MockSlicesTwo);

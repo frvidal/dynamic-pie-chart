@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ChartTypeSlice } from './chart-type-slice';
 import { TypeSlice } from './type-slice';
 import { Slice } from './slice';
+import { getLocaleNumberSymbol } from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +21,12 @@ export class DynamicPieChartService {
      * @param slices slices sent the component to be drawn.
      */
     public buildChartTypeSlices(typeSlices: TypeSlice[], slices: Slice[]): ChartTypeSlice[] {
+
+        function label(type: number) {
+            const ts = typeSlices.find(typeSlice => typeSlice.type === type);
+            return (ts) ? ts.label : 'undefined';
+        }
+
         const chartTypeSlices = new Map<number, ChartTypeSlice>();
         let endingAngle = 0;
         slices.forEach(slice => {
@@ -27,7 +34,7 @@ export class DynamicPieChartService {
                 chartTypeSlices.get(slice.type).endingAngle += slice.angle;
                 endingAngle = chartTypeSlices.get(slice.type).endingAngle;
             } else {
-                chartTypeSlices.set(slice.type, new ChartTypeSlice(slice.type, 'label', endingAngle, endingAngle + slice.angle));
+                chartTypeSlices.set(slice.type, new ChartTypeSlice(slice.type, label(slice.type), endingAngle, endingAngle + slice.angle));
                 endingAngle += slice.angle;
             }
         });
