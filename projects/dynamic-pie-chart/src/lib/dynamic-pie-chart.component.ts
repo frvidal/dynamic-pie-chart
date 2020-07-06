@@ -130,6 +130,8 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
          */
         function calculateOffset(slices: Slice[]) {
             let offset = 0;
+            // We reinitialize the slices offsets.
+            slices.forEach(slice => slice.offset = 0);
             slices.sort((s1: Slice, s2: Slice) => compare(s1, s2))
                 .forEach(slice => {
                     slice.offset = offset;
