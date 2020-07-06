@@ -1,9 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BehaviorSubject } from 'rxjs';
-import { Slice } from 'dist/dynamic-pie-chart/lib/slice';
 import { Component } from '@angular/core';
-import { TypeSlice } from 'dynamic-pie-chart';
+import { TypeSlice, Slice, DynamicPieChartModule } from 'dynamic-pie-chart';
 
 describe('AppComponent', () => {
 
