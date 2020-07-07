@@ -41,7 +41,8 @@ describe('AppComponent', () => {
               offset: 0,
               activated: false,
               selected: false,
-              contents: []
+              data: 0,
+              children: []
           },
           {
               id: 1,
@@ -51,7 +52,8 @@ describe('AppComponent', () => {
               offset: 45,
               activated: false,
               selected: false,
-              contents: []
+              data: 0,
+              children: []
           },
           {
               id: 2,
@@ -61,7 +63,8 @@ describe('AppComponent', () => {
               offset: 65,
               activated: false,
               selected: false,
-              contents: []
+              data: 0,
+              children: []
           },
           {
               id: 3,
@@ -71,7 +74,8 @@ describe('AppComponent', () => {
               offset: 75,
               activated: false,
               selected: false,
-              contents: []
+              data: 0,
+              children: []
           }
       ];
       this.slices$.next(slices);
