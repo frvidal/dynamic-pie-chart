@@ -72,7 +72,7 @@ describe('DynamicPieChartComponent', () => {
 
     it('dynamic change the filtered slices', () => {
         expect(component).toBeTruthy();
-        setTimeout(() => { 
+        setTimeout(() => {
             const filteredIds = [];
             filteredIds.push(4);
             component.filteredIds$.next(filteredIds);

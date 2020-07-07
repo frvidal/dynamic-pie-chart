@@ -110,8 +110,6 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      */
     public chartTypeSlices$ = new BehaviorSubject<ChartTypeSlice[]>([]);
 
-    public type = -1;
-
     constructor(public dynamicPieChartService: DynamicPieChartService) {
         super();
     }
