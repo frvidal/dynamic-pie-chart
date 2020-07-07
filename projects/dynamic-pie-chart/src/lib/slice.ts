@@ -8,9 +8,10 @@ export class Slice {
         public angle: number,
         public offset: number,
         public color: string,
-        public contents: object[],
+        public children: any[],
         public activated = false,
-        public selected = false) { }
+        public selected = false,
+        public data?: any) { }
 
     /**
      * Transform the object into a string.

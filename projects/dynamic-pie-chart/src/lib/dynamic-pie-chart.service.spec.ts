@@ -4,7 +4,7 @@ import { DynamicPieChartService } from './dynamic-pie-chart.service';
 import { Component, OnInit } from '@angular/core';
 import { TypeSlice } from './type-slice';
 import { MockSlicesOne } from './mock-slices-one';
-import { Slice } from 'dist/dynamic-pie-chart/lib/slice';
+import { Slice } from './slice';
 
 describe('DynamicPieChartService', () => {
     let component: TestHostComponent;
@@ -12,7 +12,7 @@ describe('DynamicPieChartService', () => {
     let service: DynamicPieChartService;
 
     @Component({
-        selector: 'app-host-component',
+        selector: 'lib-app-host-component',
         template:
             `
             <div  *ngIf="d1" style="width:400px; height:400px;background-color:lightGrey">

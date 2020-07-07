@@ -1,4 +1,4 @@
-export const MockSlicesTwo = [
+export const MockSlicesTwoOrdered = [
     {
         id: 0,
         type: 1,
@@ -12,7 +12,7 @@ export const MockSlicesTwo = [
     },
     {
         id: 1,
-        type: 2,
+        type: 1,
         angle: 40,
         offset: 0,
         color: 'orange',
@@ -23,7 +23,7 @@ export const MockSlicesTwo = [
     },
     {
         id: 2,
-        type: 3,
+        type: 1,
         angle: 40,
         offset: 0,
         color: 'red',
@@ -67,7 +67,7 @@ export const MockSlicesTwo = [
     },
     {
         id: 6,
-        type: 2,
+        type: 1,
         angle: 40,
         offset: 0,
         color: 'violet',
@@ -89,7 +89,7 @@ export const MockSlicesTwo = [
     },
     {
         id: 8,
-        type: 3,
+        type: 1,
         angle: 40,
         offset: 0,
         color: 'darkGreen',

@@ -24,6 +24,15 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     @Input() slices$ = new BehaviorSubject<Slice[]>([]);
 
     /**
+     * filteredIds$ : This behaviorSubject broadcasts an array of slice identifiers which should be drawn.
+     *
+     * The goal of this array is to limit the renderer to some sections only. we aim a partial draw.
+     *
+     * _If this behaviorSubject emits an empty array, then the complete pie should be drawn._
+     */
+    @Input() filteredIds$ = new BehaviorSubject<number[]>([]);
+
+    /**
      * Observable passing an array of Types of slices used for the legend.
      */
     @Input() typeSlices$ = new BehaviorSubject<TypeSlice[]>([]);
@@ -44,13 +53,6 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      * __There can only be one active on the same dashboard.__
      */
     @Input() active: boolean;
-
-    /**
-     * filteredSlice : index of slice the be displayed.
-     *
-     * _If this index is greater than -1, then the pie will display one **ONE** slice, otherwise the **WHOLE** pie will drawn._
-     */
-    @Input() filteredSlice = -1;
 
     /**
      * legend : Do we add a legend around the slices of the Pie.
@@ -97,6 +99,13 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     public wholeTypeSlices: TypeSlice[];
 
     /**
+     * Array of slice identifiers filtered to be drawn.
+     *
+     * If this array is empty, system will consider that no filter has been set. The whole chart will be drawn.
+     */
+    public filteredIds: number[] = [];
+
+    /**
      * Observable emitting an array of types of slice used to display the legend associated with each type of slice.
      */
     public chartTypeSlices$ = new BehaviorSubject<ChartTypeSlice[]>([]);
@@ -108,9 +117,6 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
     }
 
     ngOnInit() {
-        if (this.debug) {
-            console.log('Filtered slice %d for identifier %d', this.filteredSlice, this.pie);
-        }
     }
 
     ngAfterViewInit() {
@@ -144,6 +150,17 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
             this.typeSlices$.pipe(
                 switchMap(typeSlices => {
                     this.wholeTypeSlices = typeSlices;
+                    return this.filteredIds$;
+                })
+            ).pipe(
+                switchMap(filteredIds => {
+                    this.cleanupFilteredSlices(this.filteredIds);
+                    this.filteredIds = filteredIds;
+                    if (this.debug) {
+                        console.groupCollapsed('Slices to be filtered for pie %d', this.pie);
+                        this.filteredIds.forEach(id => console.log ('id', id));
+                        console.groupEnd();
+                    }
                     return this.slices$;
                 })
             ).subscribe(slices => {
@@ -182,8 +199,8 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
             console.groupEnd();
         }
         slices.forEach(slice => {
-            // Either we generate and draw the whole pie, or we just draw one slide with the given index
-            if ((this.filteredSlice === -1) || (slice.id === this.filteredSlice)) {
+            // Either we generate and draw the whole pie, or we just draw the slices whose ids are declared in the filteredIds array
+            if ((this.filteredIds.length === 0) || (this.filteredIds.indexOf(slice.id) >= 0)) {
                 this.generatePieSlice(slice);
             }
         });
@@ -205,6 +222,17 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
         this.texts = [...chartTypeSlices.map(chartTypeSlice => '#text-' + this.pie + '-' + chartTypeSlice.type)];
     }
 
+
+    /**
+     * We cleanup the previous slices drawn by the former given filtered slices.
+     * @param filteredIds array of the former slice identifier drawn.
+     */
+    cleanupFilteredSlices(filteredIds: number[]) {
+        filteredIds.forEach(id => {
+            D3.select('#pie-' + this.pie + 'svg-slice-' + id).selectAll('*').remove();
+        });
+    }
+
     /**
      * This function generates the SVG arc figuring a slice.
      * @param slice the given slice with its parameters *(such as angle, color...)*
@@ -221,6 +249,7 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
         });
 
         D3.select(this.svgPieSliceID(slice.id))
+            .attr('id', 'pie-' + this.pie + 'svg-slice-' + slice.id)
             .append('path')
             .attr('transform', 'translate(200,200)')
             .attr('fill', slice.color)

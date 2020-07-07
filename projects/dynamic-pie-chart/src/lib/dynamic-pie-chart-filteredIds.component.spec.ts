@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Slice } from './slice';
 import { TypeSlice } from './type-slice';
-import { MockSlicesOne } from './mock-slices-one';
-import { MockSlicesTwo } from './mock-slices-two';
+import { MockSlicesTwoOrdered } from './mock-slices-two-ordered';
 
 describe('DynamicPieChartComponent', () => {
     let component: TestHostComponent;
@@ -23,50 +22,13 @@ describe('DynamicPieChartComponent', () => {
                         [active]=true
                         [legend]=false
                         [slices$]=slices$
+                        [filteredIds$]=filteredIds$
                         [typeSlices$]=typeSlices$
                         [pie]=1>
                     </lib-dynamic-pie-chart>
                 </div>
             </td>
-            <td>
-                <div style="width:400px;height:400px">
-                    <lib-dynamic-pie-chart
-                        [radius]=150
-                        [active]=true
-                        [legend]=true
-                        [slices$]=slices$
-                        [typeSlices$]=typeSlices$
-                        [pie]=2>
-                    </lib-dynamic-pie-chart>
-                </div>
-            </td>
          </tr>
-         <tr>
-         <td>
-             <div style="width:250px;height:250px">
-                 <lib-dynamic-pie-chart
-                     [radius]=150
-                     [active]=false
-                     [legend]=false
-                     [slices$]=slices$
-                     [typeSlices$]=typeSlices$
-                     [pie]=3>
-                 </lib-dynamic-pie-chart>
-             </div>
-         </td>
-         <td>
-             <div style="width:100px;height:100px">
-                 <lib-dynamic-pie-chart
-                     [radius]=150
-                     [active]=false
-                     [legend]=true
-                     [slices$]=slices$
-                     [typeSlices$]=typeSlices$
-                     [pie]=4>
-                 </lib-dynamic-pie-chart>
-             </div>
-         </td>
-      </tr>
       </table>
     `
     })
@@ -78,9 +40,7 @@ describe('DynamicPieChartComponent', () => {
 
         ngOnInit() {
             const tab = [];
-            tab.push (1);
-            tab.push (3);
-            tab.push (8);
+            tab.push (0);
             this.filteredIds$.next(tab);
 
             const typeSlices = [];
@@ -89,17 +49,13 @@ describe('DynamicPieChartComponent', () => {
             typeSlices.push(new TypeSlice(3, 'el label Tres'));
             typeSlices.push(new TypeSlice(4, 'The label Four...'));
             this.typeSlices$.next(typeSlices);
-            this.slices$.next(initSlicesOne());
+            this.slices$.next(initSlicesTwo());
 
         }
     }
 
-    function initSlicesOne() {
-        return MockSlicesOne;
-    }
-
     function initSlicesTwo() {
-        return MockSlicesTwo;
+        return MockSlicesTwoOrdered;
     }
 
     beforeEach(async(() => {
@@ -114,29 +70,24 @@ describe('DynamicPieChartComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
-    it('dynamic change the angles', () => {
-        expect(component).toBeTruthy();
-        setTimeout(() => {
-            component.slices$.next(initSlicesTwo());
-            fixture.detectChanges();
-        }, 5000);
-    });
-
     it('dynamic change the filtered slices', () => {
         expect(component).toBeTruthy();
-        setTimeout(() => {
+        setTimeout(() => { 
             const filteredIds = [];
-            component.filteredIds$.next([]);
-            filteredIds.push(2);
             filteredIds.push(4);
-            filteredIds.push(6);
             component.filteredIds$.next(filteredIds);
-            fixture.detectChanges();
-        }, 7000);
+        }, 100) ;
+
+        /* Possible animation ?
+        for (let i = 0; i < 9; i++) {
+            setTimeout(() => {
+                const filteredIds = [];
+                filteredIds.push(i);
+                component.filteredIds$.next(filteredIds);
+                fixture.detectChanges();
+            }, 100 * i );
+        }
+        */
     });
 
 });

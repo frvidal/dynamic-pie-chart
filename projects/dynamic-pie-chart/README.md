@@ -37,6 +37,7 @@ To include this component into a container, you just have to declare this sectio
 	[active]=true
 	[legend]=legend
 	[slices$]=slices$
+	[filteredSlices$]=filteredSlices$
 	[typeSlices$]=typeSlices$
 	(selected)="sliceSelection($event)" 
 	(activated)="sliceActivation($event)">
@@ -52,6 +53,7 @@ radius | INPUT | the radius of the Pie in pixel.
 active | INPUT | Does this pie have to be active, or not ? A pie is a set of slices. An active pie allows each slice to be activated, or selected, by the mouse cursor.
 legend | INPUT | `true` or `false`. _Does this pie has a legend ?_  In this current release (1.0.0), the legend is a circle with lebel surrounding the pie.
 slices$ | INPUT | an observable which publishes an array of slices to be drawn. Each sector diagram is made up of pieces, from various angles, and whose sum is equal to 360. _(This widget supports a sum of tranches lower than 360)_. This array will be internally sorted on the `type` property to provide a legend.
+filteredSlices$ | INPUT | an **OPTIONAL** `observable` which broadcasts an array of slices to be filtered on the chart.
 typeSlices$ | INPUT | an `observable` which publishes an array of type of slices. the array ol slices  
 selected | OUTPUT |  an `EventEmitter` to inform the parent component that a slice has been activated
 activated | OUTPUT |  an `EventEmitter` to inform the parent component that a slice has been selected
@@ -67,12 +69,13 @@ Property | type | Comment
 ------------ | ------------- | -------------
 id | number | the identifier of the slice, un unique number per pie
 type | number | the type of slice
-angle | number | the angle of this slice ***in degree**
+angle | number | the angle of this slice **in degree**
 offset | number | the offset (in degrees) of this slice within the pie. This property is there for internal use. Its value will be processed by the component. 
 color | string | the color of this slice
-contents | string | an array of objects associated to this slice. 
-activated | boolean | `true` or `false` if this slice is activated (the end-user has clicked on its),
-selected | boolean | `true` or `false` if this slice is selectecd (the end-user has clicked on its),
+data | any | the data object associated to this child.
+children | array of any | an array of data which can be considered as the children linked to this slice
+activated | boolean | `true` or `false` if this slice is activated (the end-user has moved the mouse on it)
+selected | boolean | `true` or `false` if this slice is selected (the end-user has clicked on it)
 
 ## What is a type of slice ?
 

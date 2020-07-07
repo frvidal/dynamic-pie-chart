@@ -7,7 +7,8 @@ export const MockSlicesOne = [
         color: 'green',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 1,
@@ -17,7 +18,8 @@ export const MockSlicesOne = [
         color: 'orange',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 2,
@@ -27,7 +29,8 @@ export const MockSlicesOne = [
         color: 'red',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 3,
@@ -37,7 +40,8 @@ export const MockSlicesOne = [
         color: 'drakBlue',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 4,
@@ -47,7 +51,8 @@ export const MockSlicesOne = [
         color: 'brown',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 5,
@@ -57,7 +62,8 @@ export const MockSlicesOne = [
         color: 'blue',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 6,
@@ -67,7 +73,8 @@ export const MockSlicesOne = [
         color: 'violet',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 7,
@@ -77,7 +84,8 @@ export const MockSlicesOne = [
         color: 'grey',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     },
     {
         id: 8,
@@ -87,6 +95,7 @@ export const MockSlicesOne = [
         color: 'darkGreen',
         activated: false,
         selected: false,
-        contents: []
+        children: [],
+        data: 0
     }
 ];
