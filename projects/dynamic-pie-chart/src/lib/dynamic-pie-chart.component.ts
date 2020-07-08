@@ -227,7 +227,7 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      */
     cleanupFilteredSlices(filteredIds: number[]) {
         filteredIds.forEach(id => {
-            D3.select('#pie-' + this.pie + 'svg-slice-' + id).selectAll('*').remove();
+            D3.select(this.svgPieSliceID(id)).selectAll('*').remove();
         });
     }
 
@@ -247,7 +247,6 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
         });
 
         D3.select(this.svgPieSliceID(slice.id))
-            .attr('id', 'pie-' + this.pie + 'svg-slice-' + slice.id)
             .append('path')
             .attr('transform', 'translate(200,200)')
             .attr('fill', slice.color)
@@ -308,6 +307,9 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
      * @param slice the slice highlighted by the end-user mouse.
      */
     onSliceMouseOver(slice: Slice): void {
+        if (this.debug) {
+            console.log('onSliceMouseOver(%d)', slice.id);
+        }
         this.inactiveArcs();
         this.inactiveTexts();
         this.activeArc('#arc-' + this.pie + '-' + slice.type);
