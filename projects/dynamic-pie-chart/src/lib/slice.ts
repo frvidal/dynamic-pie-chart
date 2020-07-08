@@ -16,7 +16,7 @@ export class Slice {
     /**
      * Transform the object into a string.
      */
-    toString() {
-        console.log (this.type + ' ' + this.id + ' ' + this.offset + ' ' + this.angle + ' ' + this.color);
+    toString(): string {
+        return this.type + ' ' + this.id + ' ' + this.offset + ' ' + this.angle + ' ' + this.color;
     }
 }
