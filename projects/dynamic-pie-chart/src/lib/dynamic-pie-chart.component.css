@@ -14,6 +14,7 @@
 
 .slice-active:hover {
     fill-opacity: 0.9;
+    cursor: grab;
 }
 
 .slice-inactive {

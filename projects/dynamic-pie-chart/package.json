@@ -1,6 +1,6 @@
 {
   "name": "dynamic-pie-chart",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "peerDependencies": {
     "@angular/common": "^9.1.11",
     "@angular/core": "^9.1.11",

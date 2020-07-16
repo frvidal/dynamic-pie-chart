@@ -29,9 +29,6 @@ export class AppComponent implements OnInit {
     this.typeSlices$.next(typeSlices);
 
     this.slices$.next(MockSlicesOne);
-    setTimeout(() => {
-      this.slices$.next(MockSlicesTwo);
-    }, 5000);
   }
 
   /**
@@ -40,6 +37,13 @@ export class AppComponent implements OnInit {
    */
   public sliceSelection(slice: Slice) {
     console.log ('Slice identifier selected', slice.id);
+    this.slices$.next(MockSlicesTwo);
+    const typeSlices = [
+      {type: 1, label: 'One'},
+      {type: 2, label: 'Two'},
+      {type: 3, label: 'Three'}
+    ];
+    this.typeSlices$.next(typeSlices);
   }
 
   /**
