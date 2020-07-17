@@ -22,6 +22,7 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 // const context = require.context('./', true, /dynamic-pie-chart-filteredIds\.component\.spec\.ts$/);
+// const context = require.context('./', true, /dynamic-pie-chart\.component\.spec\.ts$/);
 // const context = require.context('./', true, /dynamic-pie-chart-event-emitter\.component\.spec\.ts$/);
 // const context = require.context('./', true, /dynamic-pie-chart\.service\.spec\.ts$/);
 

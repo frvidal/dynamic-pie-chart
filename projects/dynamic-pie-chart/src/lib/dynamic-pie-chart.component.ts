@@ -267,16 +267,17 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                     .append('path')
                     .attr('id', idPathText())
                     .attr('d', pathText);
+
+                D3.select(this.svgPieSliceID(slice.id))
+                    .append('text')
+                    .attr('transform', 'translate(200,200)')
+                    .append('textPath')
+                    .attr('xlink:href', '#' + idPathText())
+                    .attr('startOffset', (slice.angle * 0.23) + '%')
+                    .attr('fill', 'white')
+                    .html(slice.angle + '%');
             }
 
-            D3.select(this.svgPieSliceID(slice.id))
-                .append('text')
-                .attr('transform', 'translate(200,200)')
-                .append('textPath')
-                .attr('xlink:href', '#' + idPathText())
-                .attr('startOffset', (slice.angle * 0.23) + '%')
-                .attr('fill', 'white')
-                .html(slice.angle + '%');
 
             D3.select(this.svgPieSliceID(slice.id))
                 .on('click', function() { this.onSliceClick(slice); }.bind(this))
