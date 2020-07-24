@@ -7,7 +7,9 @@ export class Slice {
         public type: number,
         public angle: number,
         public offset: number,
-        public color: string,
+        public backgroundColor: string,
+        public textColor: string,
+        public textFontSize: string,
         public children: any[],
         public activated = false,
         public selected = false,
@@ -17,6 +19,6 @@ export class Slice {
      * Transform the object into a string.
      */
     toString(): string {
-        return this.type + ' ' + this.id + ' ' + this.offset + ' ' + this.angle + ' ' + this.color;
+        return this.type + ' ' + this.id + ' ' + this.offset + ' ' + this.angle + ' ' + this.backgroundColor;
     }
 }

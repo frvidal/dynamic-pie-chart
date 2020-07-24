@@ -9,7 +9,7 @@
     "test:watch": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:internal": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm pack && cd ../.. && npm i ./dist/dynamic-pie-chart/dynamic-pie-chart-1.0.12.tgz",
+    "ng deploy:internal": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm pack && cd ../.. && npm i ./dist/dynamic-pie-chart/dynamic-pie-chart-1.1.0.tgz",
     "deploy:external": "ng build dynamic-pie-chart && cd dist/dynamic-pie-chart && npm publish"
   },
   "private": true,
@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "d3": "^5.16.0",
-    "dynamic-pie-chart": "^1.0.13",
+    "dynamic-pie-chart": "^1.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

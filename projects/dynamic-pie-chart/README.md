@@ -71,7 +71,9 @@ id | number | the identifier of the slice, un unique number per pie
 type | number | the type of slice
 angle | number | the angle of this slice **in degree**
 offset | number | the offset (in degrees) of this slice within the pie. This property is there for internal use. Its value will be processed by the component. 
-color | string | the color of this slice
+backgroundColor | string | the background color of this slice
+textColor | string | the color of the 'numeric' value associated to slice
+textFontSize | string | the font size attributed to this value
 data | any | the data object associated to this child.
 children | array of any | an array of data which can be considered as the children linked to this slice
 activated | boolean | `true` or `false` if this slice is activated (the end-user has moved the mouse on it)

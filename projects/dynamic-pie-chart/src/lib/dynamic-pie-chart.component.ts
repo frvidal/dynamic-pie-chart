@@ -249,7 +249,7 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
         D3.select(this.svgPieSliceID(slice.id))
             .append('path')
             .attr('transform', 'translate(200,200)')
-            .attr('fill', slice.color)
+            .attr('fill', slice.backgroundColor)
             .attr('d', pathSlice);
 
         if (this.active) {
@@ -271,10 +271,11 @@ export class DynamicPieChartComponent extends BaseComponent implements OnInit, O
                 D3.select(this.svgPieSliceID(slice.id))
                     .append('text')
                     .attr('transform', 'translate(200,200)')
+                    .attr('fill', slice.textColor)
+                    .attr('font-size', slice.textFontSize)
                     .append('textPath')
                     .attr('xlink:href', '#' + idPathText())
                     .attr('startOffset', (slice.angle * 0.23) + '%')
-                    .attr('fill', 'white')
                     .html(slice.angle + '%');
             }
 

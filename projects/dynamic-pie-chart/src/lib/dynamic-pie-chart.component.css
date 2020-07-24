@@ -21,6 +21,10 @@
     fill-opacity: 0.4;
 }
 
+.textpercentage {
+    fill: red;
+}
+
 .text {
     fill: grey;
     font-size: 22px;
