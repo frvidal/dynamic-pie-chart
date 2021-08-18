@@ -7,8 +7,6 @@ This library provides a dynamic pie chart, i.e. a sector diagram widget, which i
 
 [A sample usage of this library can be previewed (and admired) in the Fitzhì solution.](http://www.fitzhi.com)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
-
 ![Dynamic Pie Chart](https://frvidal.github.io/dynamic-pie-chart/projects/dynamic-pie-chart/dynamic-pie-chart.gif)
 
 ## Installing this library in your project ?

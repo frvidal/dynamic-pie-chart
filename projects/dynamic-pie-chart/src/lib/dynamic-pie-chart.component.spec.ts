@@ -114,11 +114,11 @@ describe('DynamicPieChartComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should be created without problem.', () => {
         expect(component).toBeTruthy();
     });
 
-    it('dynamic change the angles', () => {
+    it('should accept the dynamic change of angles.', () => {
         expect(component).toBeTruthy();
         setTimeout(() => {
             component.slices$.next(initSlicesTwo());
@@ -126,7 +126,7 @@ describe('DynamicPieChartComponent', () => {
         }, 5000);
     });
 
-    it('dynamic change the filtered slices', () => {
+    it('should dynamic change the filtered slices.', () => {
         expect(component).toBeTruthy();
         setTimeout(() => {
             const filteredIds = [];

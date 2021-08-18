@@ -16,7 +16,10 @@ import { ChartTypeSlice } from './chart-type-slice';
 })
 export class DynamicPieChartComponent extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
 
-    private debug = false;
+    /**
+     * Undocumented parameter to launch this component in 'DEBUG' mode.
+     */
+    @Input() debug = false;
 
     /**
      * Observable passing an array of Slices to the pie.
