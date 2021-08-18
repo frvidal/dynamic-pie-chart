@@ -1,12 +1,12 @@
-import { Component, AfterViewInit, Input, ViewEncapsulation, OnInit, AfterContentInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import * as D3 from 'd3';
-import { Slice } from './slice';
-import { BehaviorSubject, of, Observable, Subject } from 'rxjs';
-import { tap, switchMap, switchMapTo } from 'rxjs/operators';
-import { TypeSlice } from './type-slice';
-import { BaseComponent } from './base.component';
-import { DynamicPieChartService } from './dynamic-pie-chart.service';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { BaseDirective } from './base.component';
 import { ChartTypeSlice } from './chart-type-slice';
+import { DynamicPieChartService } from './dynamic-pie-chart.service';
+import { Slice } from './slice';
+import { TypeSlice } from './type-slice';
 
 @Component({
     selector: 'lib-dynamic-pie-chart',
@@ -14,7 +14,7 @@ import { ChartTypeSlice } from './chart-type-slice';
     encapsulation: ViewEncapsulation.Emulated,
     styleUrls: ['./dynamic-pie-chart.component.css']
 })
-export class DynamicPieChartComponent extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DynamicPieChartComponent extends BaseDirective implements OnInit, OnDestroy, AfterViewInit {
 
     /**
      * Undocumented parameter to launch this component in 'DEBUG' mode.

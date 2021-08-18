@@ -1,7 +1,8 @@
-import { OnDestroy } from '@angular/core';
+import { Directive, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-export class BaseComponent implements OnDestroy {
+@Directive()
+export class BaseDirective implements OnDestroy {
 
 	/**
 	 * Array of subscriptions activated on the child component.
