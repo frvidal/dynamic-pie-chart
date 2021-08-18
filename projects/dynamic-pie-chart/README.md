@@ -9,6 +9,10 @@ This library provides a dynamic pie chart, i.e. a sector diagram widget, which i
 
 ![Dynamic Pie Chart](https://frvidal.github.io/dynamic-pie-chart/projects/dynamic-pie-chart/dynamic-pie-chart.gif)
 
+- The release 1.1.x is linked with Angular 9.
+- The release 1.2.x is linked with Angular 10.
+- The release 1.3.x is linked with Angular 11.
+
 ## Installing this library in your project ?
 
 The most simple command `npm install dynamic-pie-chart` will install this library
