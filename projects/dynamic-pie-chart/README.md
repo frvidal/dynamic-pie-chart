@@ -12,6 +12,7 @@ This library provides a dynamic pie chart, i.e. a sector diagram widget, which i
 - The release 1.1.x is associated with Angular 9.
 - The release 1.2.x is associated with Angular 10.
 - The release 1.3.x is associated with Angular 11.
+- The release 1.4.x is associated with Angular 12.
 
 ## Installing this library in your project ?
 
